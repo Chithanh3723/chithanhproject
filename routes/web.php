@@ -13,6 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('chongu', function () {
+Route::get('3723', function () {
     return ('welcome');
 });
+Route::get('xin-chao/{ten}/{namsinh}', function($ten, $namsinh){
+    return ('Xin chao ban: ' . $ten . '<br> Nam sinh la: ' . $namsinh);
+});
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('xin-chao/{ten}', function($ten){
+    return 'xinchao: ' . $ten;
+})->where('ten', '[A-z][a-z]+');
+
+Route::group(['prefix'=>'nhom'], function(){
+    route::get('nhom1', function() {return "Bạn đang ở nhom/nhom1"; });
+    route::get('nhom2', function() {return "Bạn đang ở nhom/nhom2"; });
+    route::get('nhom3', function() {return "Bạn đang ở nhom/nhom3"; });
+    route::get('nhom4', function() {return "Bạn đang ở nhom/nhom4"; });
+    });
